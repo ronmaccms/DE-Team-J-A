@@ -30,9 +30,9 @@ G = ox.graph_from_place(place_name, network_type='drive', simplify=True)
 area = ox.geocode_to_gdf(place_name)
 
 # Load eviction data and filter for Manhattan only
-eviction_data = open(r"C:\Users\ARoncal\OneDrive - Thornton Tomasetti, Inc\__License Resources\Desktop\test-de\data\Evictions_20240612.csv")
-eviction_df = pd.read_csv(eviction_data)
-manhattan_evictions = eviction_df[eviction_df['BOROUGH'] == 'MANHATTAN']
+url = "https://raw.githubusercontent.com/ronmaccms/DE-Team-J-A/main/data/Evictions_20240612.csv"
+eviction_data = pd.read_csv(url)
+manhattan_evictions = eviction_data[eviction_data['BOROUGH'] == 'MANHATTAN']
 clean_evictions = manhattan_evictions.dropna(subset=['Latitude'])
 
 # Convert eviction data to GeoDataFrame
@@ -129,7 +129,8 @@ nodes.plot(ax=ax, color='white', markersize=0.1)
 plt.show()
 
 # Load construction data
-construction_data = open(r"C:\Users\ARoncal\OneDrive - Thornton Tomasetti, Inc\__License Resources\Desktop\test-de\data\HousingDB_post2010.csv")
+url2 = "https://raw.githubusercontent.com/ronmaccms/DE-Team-J-A/main/data/HousingDB_post2010.csv"
+construction_data = pd.read_csv(url2)
 construction_df = pd.read_csv(construction_data)
 manhattan_construction = construction_df[construction_df['Boro'] == 1]
 clean_construction = manhattan_construction.dropna(subset=['Latitude'])
