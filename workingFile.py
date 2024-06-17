@@ -76,7 +76,7 @@ nodes.plot(ax=ax, color='white', markersize=0.1)
 plt.show()
 
 # Load property data
-property_data = open(r'H:\03_AIA\01_GRAPHML\cleaned_property_data.csv')
+property_data = open(r'data\cleaned_property_data.csv')
 property_df = pd.read_csv(property_data)
 
 # Convert property data to GeoDataFrame
@@ -221,7 +221,7 @@ nodes, edges = ox.graph_to_gdfs(G_enriched)
 nodes['avg_evictions']
 
 # Load and process neighborhood data
-neighborhood_data = open(r'C:\Users\jfoo\OneDrive - tvsdesign\Desktop\MACAD\AIA\Studio\AIA-GML-James-Andres\Data\Neighborhoods Boundries.geojson')
+neighborhood_data = open(r'data\Neighborhoods Boundries.geojson')
 neighborhood_gdf = gpd.read_file(neighborhood_data)
 neighborhood_gdf.to_crs(epsg=4326)
 
